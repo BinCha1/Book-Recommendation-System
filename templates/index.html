@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BookVerse - Discover Your Next Adventure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            animation: {
+              float: "float 6s ease-in-out infinite",
+              "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+              gradient: "gradient 15s ease infinite",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-10px)" },
+              },
+              gradient: {
+                "0%, 100%": { "background-position": "0% 50%" },
+                "50%": { "background-position": "100% 50%" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .gradient-bg {
+        background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+        background-size: 400% 400%;
+      }
+      .glass {
+        backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .book-card:hover {
+        transform: translateY(-8px) scale(1.02);
+      }
+      .search-glow:focus {
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1),
+          0 0 20px rgba(99, 102, 241, 0.3);
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white"
+  >
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex items-center space-x-2">
+            <div
+              class="w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 rounded-lg flex items-center justify-center animate-pulse-slow"
+            >
+              <svg
+                class="w-5 h-5 text-white"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <span
+              class="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+              >BookVerse</span
+            >
+          </div>
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="/"
+              class="text-white/90 hover:text-white transition-colors font-medium"
+              >Discover</a
+            >
+            <a
+              href="#trending"
+              class="text-white/90 hover:text-white transition-colors font-medium"
+              >Trending</a
+            >
+            <a
+              href="#about"
+              class="text-white/90 hover:text-white transition-colors font-medium"
+              >About</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-16 overflow-hidden">
+      <!-- Background Banner Image -->
+      <div class="absolute inset-0 z-0"></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="text-center">
+          <h1 class="text-5xl md:text-7xl font-black mb-6 animate-float">
+            <span
+              class="bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent"
+            >
+              Discover Books
+            </span>
+            <br />
+            <span class="text-white/90">That Move You</span>
+          </h1>
+          <p
+            class="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto mb-12 leading-relaxed"
+          >
+            Embark on literary adventures curated just for you. From bestsellers
+            to hidden gems, find your next great read.
+          </p>
+
+          <!-- Enhanced Search -->
+          <div class="max-w-2xl mx-auto mb-16">
+            <form action="/search" method="POST" class="relative">
+              <div class="relative glass rounded-2xl p-2">
+                <input
+                  type="text"
+                  name="book_name"
+                  placeholder="Search for books, authors, or genres..."
+                  class="w-full bg-transparent text-white placeholder-white/60 px-6 py-4 rounded-xl focus:outline-none search-glow text-lg"
+                  required
+                />
+                <button
+                  type="submit"
+                  class="absolute right-2 top-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white p-3 rounded-xl hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105"
+                >
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Books Section -->
+    <section class="py-20 bg-black/20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            <span
+              class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+            >
+              Trending Now
+            </span>
+          </h2>
+          <p class="text-white/70 text-lg max-w-2xl mx-auto">
+            Discover the most popular books loved by readers worldwide
+          </p>
+        </div>
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8"
+        >
+          {% for i in range(1, 26) %}
+          <div
+            class="book-card group glass rounded-3xl p-6 transition-all duration-500 hover:bg-white/10 cursor-pointer"
+          >
+            <div class="relative mb-6">
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-purple-500/20 to-transparent rounded-2xl"
+              ></div>
+              <img
+                src="{{image[i]}}"
+                alt="{{book_name[i]}}"
+                class="w-full h-64 object-cover rounded-2xl shadow-2xl group-hover:shadow-purple-500/25 transition-all duration-500"
+                loading="lazy"
+              />
+              <div class="absolute top-3 right-3 glass rounded-full p-2">
+                <div class="flex items-center space-x-1">
+                  <svg
+                    class="w-4 h-4 text-yellow-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                    ></path>
+                  </svg>
+                  <span class="text-white font-bold text-sm"
+                    >{{rating[i]}}</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <h3
+                class="font-bold text-lg text-white line-clamp-2 group-hover:text-purple-300 transition-colors"
+              >
+                {{book_name[i]}}
+              </h3>
+              <p class="text-white/60 text-sm font-medium">by {{author[i]}}</p>
+              <div class="flex items-center justify-between pt-2">
+                <div class="flex items-center space-x-2">
+                  <div class="flex text-yellow-400">
+                    {% for star in range(5) %} {% if star < (rating[i]|float /
+                    2)|int %}
+                    <svg
+                      class="w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                      ></path>
+                    </svg>
+                    {% else %}
+                    <svg
+                      class="w-4 h-4 text-gray-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                      ></path>
+                    </svg>
+                    {% endif %} {% endfor %}
+                  </div>
+                </div>
+                <span class="text-white/50 text-xs">
+                  {{votes[i]}} reviews
+                </span>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-black/40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+          <div class="flex items-center space-x-2 mb-4 md:mb-0">
+            <div
+              class="w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 rounded-lg flex items-center justify-center"
+            >
+              <svg
+                class="w-5 h-5 text-white"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <span
+              class="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+              >BookVerse</span
+            >
+          </div>
+          <div class="text-white/60 text-sm">
+            © 2025 BookVerse. Crafted with ❤️ for book lovers everywhere.
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
